@@ -1,0 +1,70 @@
+-- 1. 
+select e.emp_id, e.emp_name, e.dept_id, e.salary from employees e where e.salary >= (select avg(emp.salary) from employees emp where emp.dept_id = e.dept_id);
+
+-- 2. 
+select emp_id, emp_name, dept_id, salary
+from employees e
+where salary = (select max(salary) from employees where dept_id = e.dept_id);
+
+-- 3. 
+select max(salary) from employees where salary < (select max(salary) from employees);
+
+-- 4. 
+select emp_id, salary from employees where salary in (select max(salary) from employees where salary < (select max(salary) from employees));
+
+-- 5. 
+select emp_id, emp_name, salary, manager_id
+from employees e
+where salary > (select salary from employees where emp_id = e.manager_id);
+
+-- 6. 
+select emp_id, emp_name, salary
+from employees e
+where exists (select 1 from employees r where r.manager_id = e.emp_id and r.salary > e.salary);
+
+-- 7. 
+select dept_id
+from employees
+group by dept_id
+having avg(salary) > (select avg(salary) from employees);
+
+-- 8. 
+select emp_id, emp_name, dept_id, salary
+from employees
+where dept_id in (select dept_id from employees group by dept_id having avg(salary) > (select avg(salary) from employees));
+
+-- 9. 
+select emp_id, emp_name, salary
+from employees
+where salary > all (select salary from employees where dept_id = (select dept_id from departments where dept_name = 'HR'));
+
+-- 10. 
+select emp_id, emp_name, salary
+from employees
+where salary > any (select salary from employees where dept_id = (select dept_id from departments where dept_name = 'Research'));
+
+-- 11. 
+select dept_id, dept_name
+from departments d
+where not exists (select 1 from projects p where p.dept_id = d.dept_id);
+
+-- 12. 
+select emp_id, emp_name, dept_id
+from employees
+where dept_id in (select dept_id from projects group by dept_id having count(*) > 1);
+
+-- 13. 
+select emp_id, emp_name, dept_id, salary
+from employees
+where dept_id in (select dept_id from projects where budget = (select max(budget) from projects));
+
+-- 14. 
+select emp_id, emp_name, salary
+from employees
+where abs(salary - (select avg(salary) from employees)) = (select min(abs(salary - (select avg(salary) from employees))) from employees);
+
+-- 15. 
+select dept_id
+from employees e
+group by dept_id
+having max(salary) > all (select salary from employees m where m.dept_id = e.dept_id and m.emp_id in (select manager_id from employees where manager_id is not null));
