@@ -1,0 +1,29 @@
+-- 1. 
+select (row_number() over (order by salary desc)) as s_no, emp_name, department, salary from employees;
+
+-- 2. 
+select (rank() over (order by salary desc)) as s_no, emp_name, department, salary from employees;
+
+-- 3. 
+select (dense_rank() over (order by salary desc)) as s_no, emp_name, department, salary from employees;
+
+-- 4.
+select (row_number() over (partition by department order by salary desc)) as s_no, emp_name, department, salary from employees;
+
+-- 5.
+select (rank() over (partition by department order by salary desc)) as s_no, emp_name, department, salary from employees;
+
+-- 6.
+select emp_name, department, salary from (select (dense_rank() over (partition by department order by salary desc)) as s_no, emp_name, department, salary from employees) t where s_no <= 2;
+
+-- 7.
+select (first_value(emp_name) over (partition by department order by salary desc)) as s_no, emp_name, department, salary from employees;
+
+-- 8.
+select (last_value(emp_name) over (partition by department order by salary desc rows between unbounded preceding and unbounded following)) as s_no, emp_name, department, salary from employees;
+
+-- 9.
+select emp_name, department, salary, (first_value(salary) over (partition by department order by salary desc)) as highest_salary, (last_value(salary) over (partition by department order by salary desc rows between unbounded preceding and unbounded following)) as lowest_salary from employees;
+
+-- 10.
+select emp_id, emp_name, department, salary from (select (dense_rank() over (order by salary desc)) as s_no, emp_id, emp_name, department, salary from employees) t where s_no = 2;
