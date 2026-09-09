@@ -1,0 +1,5 @@
+{
+  "admins": [{"aid": "A001","name": "Main Admin","username": "admin","password": "admin123"}],
+  "customers": [{"cid": "1","cname": "paamu","username": "paam buss","password": "123","tasks": []}],
+  "tasks": []
+}

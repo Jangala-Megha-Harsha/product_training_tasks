@@ -1,0 +1,5 @@
+{
+  "admins": [{"aid": "A001","name": "Main Admin","username": "admin","password": "admin123"}],
+  "customers": [{"cid": "1","cname": "Megha Harsha","username": "harsha123","password": "123","tasks": ["1"]},{"cid": "2","cname": "chaitanya","username": "chaitu","password": "456","tasks": []}],
+  "tasks": [{"tid": "1","tname": "drinking water","description": "sip some water to stay hydrated","createdBy": "1"}]
+}
