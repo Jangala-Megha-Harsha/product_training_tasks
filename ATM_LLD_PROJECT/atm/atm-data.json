@@ -1,0 +1,8 @@
+{
+  "customers":[{"customerId":1,"name":"Demo Customer","dob":631132200000,"cardNumber":"5555444433332222"}],
+  "cards":[{"cardNumber":"5555444433332222","encryptedPIN":"03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4","linkedAccountNumber":1001}],
+  "accounts":[{"type":"SAVINGS","accountNumber":1001,"balance":1050.00,"accountHolder":"Demo Customer","interestRate":2.00}],
+  "banks":[],
+  "atms":[],
+  "transactions":[{"transactionID":1788979796145,"dateTime":1788979796145,"type":"BALANCE_INQUIRY"},{"transactionID":1788979798272,"dateTime":1788979801515,"type":"DEPOSIT"},{"transactionID":1788979802739,"dateTime":1788979802739,"type":"BALANCE_INQUIRY"},{"transactionID":1788979805712,"dateTime":1788979808147,"type":"WITHDRAWAL"},{"transactionID":1788979809676,"dateTime":1788979809676,"type":"BALANCE_INQUIRY"},{"transactionID":1788979827842,"dateTime":1788979827842,"type":"BALANCE_INQUIRY"}]
+}
